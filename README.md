@@ -1,9 +1,17 @@
 # OSM Campus Map Analysis
-## 공공 지도 기반 캠퍼스 위치추정 단서 분석
+### 공공 지도에는 위치를 구별할 단서가 얼마나 있을까?
+
+**Python · OSMnx · Spatial Analysis**
+
+[노트북 보기](notebooks/osm_campus_map_analysis.ipynb) · [상세 결과](results/exploratory_results.md) · [실행 방법](#실행)
 
 OpenStreetMap에 캠퍼스 위치를 구별할 단서가 얼마나 있는지 탐색한 Python 공간정보 분석 프로젝트입니다. 단국대 죽전·천안·KAIST의 건물 이름, POI, 보행 네트워크, 교차로 형태를 비교합니다.
 
 **상태: 경계 검증 전 탐색 분석.** 로봇 위치추정 시스템이나 학습 모델이 아니며, 아래 비율은 실제 위치추정 정확도가 아닙니다. YOLO 균열 프로젝트와 독립된 소규모 프로젝트입니다.
+
+![단국대 죽전·천안·KAIST의 건물과 보행 네트워크](assets/campus-maps.png)
+
+*파란색은 이름이 있는 건물, 주황색은 이름이 없는 건물입니다. 점선은 분석에 사용한 경계로, 전체 캠퍼스 경계의 정확성은 추가 확인이 필요합니다. 지도 데이터: © OpenStreetMap contributors.*
 
 ### 구현 내용
 - OSMnx를 이용한 경계·건물·POI·보행 그래프 수집
@@ -23,6 +31,27 @@ OpenStreetMap에 캠퍼스 위치를 구별할 단서가 얼마나 있는지 탐
 선택한 지도와 표현에서는 이름 정보를 추가할 때 서술자 중복이 줄었습니다. 반경 내 이름을 전부 정확히 얻는다는 이상적 가정이므로 실제 센서 성능이나 로봇 위치추정 성공률로 해석하지 않습니다.
 
 [실행 노트북 및 지도 그림](notebooks/osm_campus_map_analysis.ipynb) · [결과와 방법의 한계](results/exploratory_results.md)
+
+### 결과를 그림으로 보기
+
+#### 01 · 주변 이름 정보가 없는 지점은 얼마나 될까?
+
+![랜드마크 검색 반경에 따른 이름 정보 공백](assets/landmark-radius.png)
+
+검색 반경을 늘리면 이름 있는 대표점이 없는 보행 노드의 비율이 감소합니다. **50m 기준 죽전 14.8%, 천안 67.2%, KAIST 31.8%**입니다. 원본 그림의 'recognition radius'와 'blind-spot'은 지도상 거리 기준이며, 실제 카메라 인식 거리나 센서 사각지대를 측정한 값이 아닙니다.
+
+#### 02 · 형태에 이름 정보를 더하면 구별이 쉬워질까?
+
+![교차로 형태와 이름 정보 결합에 따른 서술자 유일성](assets/descriptor-comparison.png)
+
+교차로 형태에 주변 이름 집합을 결합했을 때, 선택한 후보 집합에서 유일한 서술자를 갖는 교차로 비율이 증가했습니다. 죽전은 **14.4% → 76.0%**입니다. 이는 이름을 완전하고 정확하게 관측한다는 가정 아래의 **서술자 유일성**으로, 로봇 위치추정 정확도가 아닙니다.
+
+<details>
+<summary>그림의 출처와 나머지 분석 보기</summary>
+
+그림 3개는 제공된 `osm_campus_localization (3).ipynb`의 저장된 PNG 출력에서 그대로 추출했습니다. 재실행하거나 수치를 새로 생성하지 않았습니다. 전체 4개 그림과 코드는 [노트북](notebooks/osm_campus_map_analysis.ipynb)에 있습니다.
+
+</details>
 
 ### 실행
 1. 위 노트북을 내려받아 Google Colab의 파일 업로드로 엽니다.
