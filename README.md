@@ -39,6 +39,16 @@ OpenStreetMap에 캠퍼스 위치를 구별할 단서가 얼마나 있는지 탐
 
 ## 결과를 그림으로 보기
 
+### 이름 정보 공백의 공간 분포
+
+![캠퍼스별 반경 50m 내 이름 정보 분포와 정보가 없는 보행 노드](assets/landmark-coverage-map.png)
+
+빨간 ×는 반경 50m 내에 이름 있는 랜드마크 대표점이 없는 보행 노드입니다. 색이 있는 점은 주변 대표점의 개수를 나타냅니다. 이름 정보가 없는 노드 비율은 죽전 14.8%, 천안 67.2%, KAIST 31.8%이며, 그림 제목에는 반올림한 값이 표시됩니다.
+
+캠퍼스마다 색상 막대의 범위가 다르므로 같은 색을 같은 개수로 비교하면 안 됩니다. 이 지도는 OSM에 기록된 정보의 분포를 보여주며, 실제 카메라 사각지대나 위치추정 실패를 측정한 결과는 아닙니다. 지도 데이터: © OpenStreetMap contributors.
+
+[지도 원본 크게 보기](assets/landmark-coverage-map.png)
+
 ### 반경별 이름 정보 분포
 
 ![랜드마크 검색 반경에 따른 이름 정보 공백](assets/landmark-radius.png)
@@ -54,7 +64,7 @@ OpenStreetMap에 캠퍼스 위치를 구별할 단서가 얼마나 있는지 탐
 <details>
 <summary>그림의 출처와 나머지 분석 보기</summary>
 
-그림 3개는 `osm_campus_localization (3).ipynb`의 저장된 PNG 출력에서 그대로 추출했습니다. 재실행하거나 수치를 새로 생성하지 않았습니다. 전체 4개 그림과 코드는 [노트북](notebooks/osm_campus_map_analysis.ipynb)에 있습니다.
+그림 4개는 `osm_campus_localization (3).ipynb`의 저장된 PNG 출력에서 그대로 추출했습니다. 재실행하거나 수치를 새로 생성하지 않았습니다. 전체 4개 그림과 코드는 [노트북](notebooks/osm_campus_map_analysis.ipynb)에 있습니다.
 
 </details>
 
