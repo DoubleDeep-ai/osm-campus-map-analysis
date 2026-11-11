@@ -2,8 +2,6 @@
 
 ## 왜 했는지
 
-공공 지도에는 위치를 구별할 단서가 얼마나 있을까?
-
 복도나 건물 모양이 비슷해도 이름이 있으면 위치를 구별하는 데 도움이 될 것 같았다. 공공 지도에 그런 정보가 얼마나 들어 있는지 확인해 보고 싶었다.
 
 ## 한 것
@@ -41,12 +39,12 @@
 
 ## 실행
 
-[노트북](notebooks/osm_campus_map_analysis.ipynb)은 Colab CPU에서 위에서부터 순서대로 실행했다.  
-OSMnx 2.1.1을 사용했다. Nominatim/Overpass에 접근하려면 인터넷 연결이 필요했다.
+[노트북](notebooks/osm_campus_map_analysis.ipynb)은 Colab CPU에서 위에서부터 순서대로 실행하면 된다.  
+OSMnx 2.1.1을 사용했다. Nominatim/Overpass에 접근하려면 인터넷 연결이 필요하다.
 
 ## 출처
 
 - 데이터: © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL.
 - 분석 도구: [OSMnx](https://osmnx.readthedocs.io/).
 
-코드 작성에 AI 도구를 보조로 활용했으며, 실험 설계와 결과 해석은 직접 수행했습니다.
+코드 작성에는 AI 도구의 도움을 받았고, 실험 설계와 결과 해석은 직접 했다.
